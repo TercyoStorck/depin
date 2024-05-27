@@ -6,7 +6,7 @@ class Injector<T> {
 
   Type get type => T;
 
-  final T Function(Object? args)? injectArgs;
+  final T Function(dynamic args)? injectArgs;
   final T Function()? inject;
 
   @override

@@ -16,9 +16,20 @@ abstract class Inject {
       return _mocks.remove(T) as T;
     }
 
+    final injector = _injections[T]?.inject ?? _injections[T]?.injectArgs;
     final arguments = parameter ?? _params;
 
-    if (arguments == null) {
+    if (injector == null) {
+      throw Exception(T.runtimeType);
+    }
+
+    try {
+      return injector() as T;
+    } catch (e) {
+      return injector(arguments) as T;
+    }
+
+    /* if (arguments == null) {
       final injector = _injections[T]?.inject;
 
       if (injector == null) {
@@ -36,7 +47,7 @@ abstract class Inject {
 
     final instance = injector(arguments) as T;
 
-    return instance;
+    return instance; */
   }
 
   /// Returns a singleton of object.
