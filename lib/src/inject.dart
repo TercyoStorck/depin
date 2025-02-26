@@ -28,26 +28,6 @@ abstract class Inject {
     } catch (e) {
       return injector(arguments) as T;
     }
-
-    /* if (arguments == null) {
-      final injector = _injections[T]?.inject;
-
-      if (injector == null) {
-        throw Exception(T.runtimeType);
-      }
-      
-      return injector() as T;
-    }
-
-    final injector = _injections[T]?.injectArgs;
-
-    if (injector == null) {
-      throw Exception(T.runtimeType);
-    }
-
-    final instance = injector(arguments) as T;
-
-    return instance; */
   }
 
   /// Returns a singleton of object.

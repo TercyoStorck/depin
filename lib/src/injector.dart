@@ -2,7 +2,7 @@ class Injector<T> {
   Injector({
     this.injectArgs,
     this.inject,
-  }) : assert(injectArgs != null || inject != null, 'No Inject found');
+  }) : assert(injectArgs != null || inject != null, 'No injection found');
 
   Type get type => T;
 
