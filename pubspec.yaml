@@ -1,6 +1,6 @@
 name: depin
 description: "Flutter DI package"
-version: 1.0.0
+version: 1.1.0
 homepage: https://github.com/TercyoStorck/depin
 
 environment:
@@ -10,8 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  collection:
 
 dev_dependencies:
   flutter_lints: ^3.0.0
-
-flutter:

@@ -16,18 +16,15 @@ abstract class Inject {
       return _mocks.remove(T) as T;
     }
 
-    final injector = _injections[T]?.inject ?? _injections[T]?.injectArgs;
+    final constructor = _injections[T]?.inject;
     final arguments = parameter ?? _params;
 
-    if (injector == null) {
+    if (constructor == null) {
       throw Exception(T.runtimeType);
     }
 
-    try {
-      return injector() as T;
-    } catch (e) {
-      return injector(arguments) as T;
-    }
+    final superContructor = DynamicConstructor<T>(constructor, arguments);
+    return superContructor.instance;
   }
 
   /// Returns a singleton of object.
@@ -59,3 +56,5 @@ abstract class Inject {
     _mocks.putIfAbsent(T, () => instance);
   }
 }
+
+

@@ -1,6 +1,7 @@
+import 'package:depin/src/dynamic_contructor.dart';
 import 'package:flutter/widgets.dart';
 
-import 'injection_group.dart';
+import 'injection_module.dart';
 import 'injector.dart';
 import 'route_observer.dart';
 
@@ -14,7 +15,7 @@ abstract class Injection {
   );
 
   Injection() {
-    final injectors = this.groups.map((group) {
+    final injectors = this.injectionModules.map((group) {
       final map = {for (var entity in group.injections) entity.type: entity};
       return map;
     }).reduce((map1, map2) {
@@ -25,5 +26,5 @@ abstract class Injection {
     Inject._injections.addAll(injectors);
   }
 
-  List<InjectionGroup> get groups;
+  List<InjectionModule> get injectionModules;
 }

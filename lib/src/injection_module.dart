@@ -1,5 +1,5 @@
 import 'injector.dart';
 
-abstract class InjectionGroup {
+abstract class InjectionModule {
   List<Injector> get injections;
 }

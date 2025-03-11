@@ -1,13 +1,9 @@
 class Injector<T> {
-  Injector({
-    this.injectArgs,
-    this.inject,
-  }) : assert(injectArgs != null || inject != null, 'No injection found');
+  Injector(this.inject);
 
   Type get type => T;
 
-  final T Function(dynamic args)? injectArgs;
-  final T Function()? inject;
+  final Function inject;
 
   @override
   bool operator ==(other) {
