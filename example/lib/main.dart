@@ -7,6 +7,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  final GlobalKey<NavigatorState> _globalNavigatorKey = GlobalKey<NavigatorState>();
+
   MyApp({super.key});
 
   final _modules = Modules();
@@ -14,12 +16,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      key: _globalNavigatorKey,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      navigatorObservers: [_modules.routeObserver],
+      navigatorObservers: [Inject.navigatorObserver(_globalNavigatorKey)],
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

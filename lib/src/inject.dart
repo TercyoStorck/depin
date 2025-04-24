@@ -55,6 +55,17 @@ abstract class Inject {
   static void mock<T>(T instance) {
     _mocks.putIfAbsent(T, () => instance);
   }
+
+  static final Map<Key, InjectionRouteObserver> _navigatorObservers = {};
+
+  static InjectionRouteObserver navigatorObserver(Key key) {
+    return _navigatorObservers[key] ??= InjectionRouteObserver(onPassingArguments: (Object? arguments) {
+      _params = arguments;
+    });
+  }
+
+  /* InjectionRouteObserver get routeObserver {
+    NavigatorObserver
+    _observers.where((observer) => observer.navigator == '').toList();
+  } */
 }
-
-

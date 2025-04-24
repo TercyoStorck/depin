@@ -1,3 +1,4 @@
+//import 'package:depin/depin.dart';
 import 'package:flutter/widgets.dart';
 
 class InjectionRouteObserver extends RouteObserver<PageRoute<dynamic>> {
@@ -30,4 +31,8 @@ class InjectionRouteObserver extends RouteObserver<PageRoute<dynamic>> {
     _onPassingArguments(newRoute?.settings.arguments);
     super.didReplace(newRoute: newRoute, oldRoute: oldRoute);
   }
+
+  /* void _onPassingArguments(Object? arguments) {
+    Inject._params = arguments;
+  } */
 }
